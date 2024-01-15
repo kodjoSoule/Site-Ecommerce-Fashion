@@ -15,6 +15,7 @@ import { FashionProductDetailsComponent } from './components/fashion-products/fa
 import { FashionProductsOnSaleComponent } from './components/fashion-products/fashion-products-on-sale/fashion-products-on-sale.component';
 import { CategoriesComponent } from './components/fashion-products/categories/categories.component';
 import { ProductsByCategoryComponent } from './components/fashion-products/products-by-category/products-by-category.component';
+import { StatisticComponent } from './components/fashion-products/statistic/statistic.component';
 
 
 
@@ -28,5 +29,6 @@ export const routes: Routes = [
     { path : 'onSale', title: 'Listes des produits en promotion', component: FashionProductsOnSaleComponent },
     {path : 'categories', title: 'Listes des produits par catégorie', component: CategoriesComponent},
     { path: 'products/categories/:id', title: 'Product Details', component: ProductsByCategoryComponent },
+    { path: 'statistic', title: 'Statistic', component : StatisticComponent},
     { path: '**', component: NotFoundComponent }
 ];
