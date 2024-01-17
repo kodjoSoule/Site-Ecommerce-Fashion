@@ -16,19 +16,21 @@ import { FashionProductsOnSaleComponent } from './components/fashion-products/fa
 import { CategoriesComponent } from './components/fashion-products/categories/categories.component';
 import { ProductsByCategoryComponent } from './components/fashion-products/products-by-category/products-by-category.component';
 import { StatisticComponent } from './components/fashion-products/statistic/statistic.component';
+import { AboutComponent } from './about/about.component';
 
 
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
-    { path: 'home', title: 'Home Page', component: HomeComponent },
+    { path: 'home', title: 'Accueill Fashion Kodjo', component: HomeComponent },
+    { path: 'about', component: AboutComponent, pathMatch: 'full' },
     { path: 'login', title: 'Page de Connexion', component: LoginUserComponent },
     { path: 'register', title: 'Page d\'inscription', component: RegisterUserComponent },
     { path: 'products', title: 'Listes des produits', component: FashionProductListComponent },
     { path: 'products/:id', title: 'Detail d\'un produit', component: FashionProductDetailsComponent },
     { path : 'onSale', title: 'Listes des produits en promotion', component: FashionProductsOnSaleComponent },
-    {path : 'categories', title: 'Listes des produits par catégorie', component: CategoriesComponent},
-    { path: 'products/categories/:id', title: 'Product Details', component: ProductsByCategoryComponent },
-    { path: 'statistic', title: 'Statistic', component : StatisticComponent},
+    {path : 'categories', title: 'Listes des Categories par catégorie', component: CategoriesComponent},
+    { path: 'categories/:category', title: 'Lists des produits par categorie', component: ProductsByCategoryComponent },
+    { path: 'statistic', title: 'Statistic Fashion', component : StatisticComponent},
     { path: '**', component: NotFoundComponent }
 ];
