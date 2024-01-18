@@ -17,6 +17,9 @@ import { CategoriesComponent } from './components/fashion-products/categories/ca
 import { ProductsByCategoryComponent } from './components/fashion-products/products-by-category/products-by-category.component';
 import { StatisticComponent } from './components/fashion-products/statistic/statistic.component';
 import { AboutComponent } from './about/about.component';
+import { AdminListProductsComponent } from './admin-list-products/admin-list-products.component';
+import { AuthGuard } from './services/auth-guard.service';
+
 
 
 
@@ -32,5 +35,9 @@ export const routes: Routes = [
     {path : 'categories', title: 'Listes des Categories par catégorie', component: CategoriesComponent},
     { path: 'categories/:category', title: 'Lists des produits par categorie', component: ProductsByCategoryComponent },
     { path: 'statistic', title: 'Statistic Fashion', component : StatisticComponent},
+
+    {path : 'admin', title : 'Administration', component: AdminListProductsComponent, canActivate: [AuthGuard]},
+
+
     { path: '**', component: NotFoundComponent }
 ];

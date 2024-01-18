@@ -1,1 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+input.ng-valid {
+    background-color: #79ba6a;
+  }
+input.ng-invalid {
+    background-color: #f58c84;
+}
