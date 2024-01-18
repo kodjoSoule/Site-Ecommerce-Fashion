@@ -36,7 +36,11 @@ export const routes: Routes = [
     { path: 'categories/:category', title: 'Lists des produits par categorie', component: ProductsByCategoryComponent },
     { path: 'statistic', title: 'Statistic Fashion', component : StatisticComponent},
 
-    {path : 'admin', title : 'Administration', component: AdminListProductsComponent, canActivate: [AuthGuard]},
+    // {path : 'admin', title : 'Administration', component: AdminListProductsComponent, canActivate: [AuthGuard]},
+    //admin route  redirect to login if not logged in
+    // {path : 'admin', title : 'Administration',redirectTo: 'login', pathMatch: 'full'},
+    { path: 'admin',title : 'Administration', component: AdminListProductsComponent, canActivate: [AuthGuard] },
+
 
 
     { path: '**', component: NotFoundComponent }

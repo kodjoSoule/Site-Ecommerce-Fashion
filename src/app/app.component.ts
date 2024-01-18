@@ -15,4 +15,16 @@ import { FashionProductService } from './services/fashion-product.service';
 })
 export class AppComponent {
   title = 'fashion-app';
+  isAuthenticated = false;
+  constructor() { }
+  ngOnInit() {
+  }
+  setIsAuthenticated(value: boolean) {
+    this.isAuthenticated = value;
+  }
+getIsAuthenticated() {
+
+  return this.isAuthenticated;
+}
+
 }
