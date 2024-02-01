@@ -1,0 +1,25 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">{{ product.title }}</h5>
+    <p class="text-center">
+      @if(product.images.length > 0){
+      <img
+        [src]="product.images[0]"
+        class="rounded"
+        alt="{{ product.title }}"
+      />}@else{
+      <img
+        src="https://m.media-amazon.com/images/I/61jty3viOLL._AC_UF1000,1000_QL80_.jpg"
+        class="rounded img-fluid"
+        alt="{{ product.title }}"
+      />
+      }
+    </p>
+    <h6 class="card-subtitle mb-2 text-muted">
+      Category: {{ product.category }}
+    </h6>
+    <p class="card-text">Price: {{ product.actual_price }}</p>
+    <p class="card-text">Discount: {{ product.discount }}</p>
+    <button class="btn btn-primary" (click)="viewDetails()">Details</button>
+  </div>
+</div>

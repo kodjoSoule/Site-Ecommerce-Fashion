@@ -1,0 +1,26 @@
+<div class="row align-items-md-stretch">
+  @if( categoriesProduct){
+
+  <h2>
+    Categories des produits
+    <i class="bi bi-cart-check-fill text-success"></i>
+  </h2>
+  <div class="col-md-6 mb-4" *ngFor="let category of categoriesProduct">
+    <div
+      class="h-100 p-5 rounded-3"
+      style="
+        background-image: url('https://gtranslate.io/assets/images/gtranslate-a18-featured.jpg');
+      "
+    >
+      <h2 class="text-light">{{ category }}</h2>
+      <button
+        class="btn btn-secondary"
+        type="button"
+        [routerLink]="['/categories', category]"
+      >
+        Afficher les produits
+      </button>
+    </div>
+  </div>
+  }
+</div>

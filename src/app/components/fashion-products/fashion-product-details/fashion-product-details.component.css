@@ -1,0 +1,8 @@
+/* image product */
+.product-image {
+    height: 400px;
+    width: 400px;
+    object-fit: cover;
+    margin: 0 auto;
+    display: block;
+  }

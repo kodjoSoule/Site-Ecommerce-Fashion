@@ -1,0 +1,81 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{ product ? "Modifier" : "Ajouter" }} un produit</h4>
+  <button
+    type="button"
+    class="btn-close"
+    (click)="activeModal.dismiss()"
+  ></button>
+</div>
+<div class="modal-body">
+  <form #productForm="ngForm">
+    <!-- Nom du produit -->
+    <div class="mb-3">
+      <label for="productName" class="form-label">Nom du produit</label>
+      <input
+        type="text"
+        class="form-control"
+        id="productName"
+        [(ngModel)]="product.title"
+        name="title"
+        required
+      />
+    </div>
+
+    <!-- Marque -->
+    <div class="mb-3">
+      <label for="productBrand" class="form-label">Marque</label>
+      <input
+        type="text"
+        class="form-control"
+        id="productBrand"
+        [(ngModel)]="product.brand"
+        name="brand"
+        required
+      />
+    </div>
+
+    <!-- Prix -->
+    <div class="mb-3">
+      <label for="productPrice" class="form-label">Prix</label>
+      <input
+        type="number"
+        class="form-control"
+        id="productPrice"
+        [(ngModel)]="product.actual_price"
+        name="actual_price"
+        required
+      />
+    </div>
+
+    <!-- Discount -->
+    <div class="mb-3">
+      <label for="productDiscount" class="form-label">Discount</label>
+      <input
+        type="number"
+        class="form-control"
+        id="productDiscount"
+        [(ngModel)]="product.discount"
+        name="discount"
+        required
+      />
+    </div>
+
+    <!-- Autres champs du formulaire -->
+
+    <button
+      type="button"
+      class="btn btn-secondary"
+      (click)="activeModal.dismiss()"
+    >
+      Fermer
+    </button>
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="save()"
+      [disabled]="!productForm.valid"
+    >
+      Enregistrer
+    </button>
+  </form>
+</div>

@@ -1,0 +1,23 @@
+<div class="modal-header">
+  <h4 class="modal-title">Ajouter/Modifier un produit</h4>
+  <button
+    type="button"
+    class="btn-close"
+    (click)="activeModal.dismiss()"
+  ></button>
+</div>
+<div class="modal-body">
+  <!-- Ajoutez ici votre formulaire pour les détails du produit -->
+</div>
+<div class="modal-footer">
+  <button
+    type="button"
+    class="btn btn-secondary"
+    (click)="activeModal.dismiss()"
+  >
+    Fermer
+  </button>
+  <button type="button" class="btn btn-primary" (click)="save()">
+    Enregistrer
+  </button>
+</div>

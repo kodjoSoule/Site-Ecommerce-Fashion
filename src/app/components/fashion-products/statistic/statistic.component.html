@@ -1,0 +1,31 @@
+<!-- analytics.component.html -->
+<div class="container mt-4">
+  <h2 class="text-primary mb-4 text-center bg-light">Analyse Fashion</h2>
+  <div class="row">
+    <div class="col-md-6 mb-4">
+      <h4>
+        Nombre Total des products
+        <span class="text-info"> </span>
+        <span class="badge bg-primary rounded-pill">{{ productCount }}</span>
+      </h4>
+    </div>
+  </div>
+  <hr />
+
+  <hr />
+  <div class="row">
+    <div class="col-12 mb-4">
+      <h4>Produits les mieux notés</h4>
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let product of bestRatedProducts">
+          <div class="d-flex justify-content-between align-items-center">
+            <span>{{ product.title }}</span>
+            <span class="badge bg-primary rounded-pill"
+              >Note: {{ product.average_rating }}</span
+            >
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

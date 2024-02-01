@@ -1,0 +1,36 @@
+<div
+  class="p-5 mb-4 bg-light rounded-3 text-light"
+  style="
+    background-image: url('https://kinsta.com/wp-content/uploads/2018/11/ecommerce-statistics.png');
+  "
+>
+  <div class="container-fluid py-5">
+    <h1 class="display-5 fw-bold">Produit Fashion</h1>
+    <p class="col-md-8 fs-4">
+      Bienvenue sur le site de vente de produits fashion. Vous trouverez ici des
+      produits de qualité à des prix imbattables.
+    </p>
+    <button routerLink="/products" class="btn btn-primary btn-lg" type="button">
+      Liste des produits
+    </button>
+  </div>
+</div>
+
+<div class="row align-items-md-stretch">
+  @if( bestRatedProducts){
+  <h2>
+    Meilleure évaluation des produuits
+    <i class="bi bi-cart-check-fill text-success"></i>
+  </h2>
+  <div class="col-md-6 mb-4 bg-light" *ngFor="let product of bestRatedProducts">
+    @if( product!= "CATÉGORIE"){
+    <div class="h-100 p-5 bg-light rounded-3">
+      <h2>{{ product.title }}</h2>
+      <button class="btn text-info" type="button" (click)="viewDetails()">
+        Details
+      </button>
+    </div>
+    }
+  </div>
+  }
+</div>

@@ -1,0 +1,65 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="text-primary mb-4">Product Details</h3>
+    </div>
+
+    <ng-container *ngIf="product.images.length !== 0; else noImages">
+      <div class="col-4">
+        <div class="card card-cover h-100 overflow-hidden rounded-2">
+          <img
+            [src]="product.images[0]"
+            class="img-fluid product-image"
+            alt="Product Image"
+          />
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-template #noImages>
+      <div class="col-8">
+        <div class="card card-cover h-100 overflow-hidden bg-dark rounded-2">
+          <div class="d-flex align-items-center justify-content-center h-100">
+            <span class="text-muted">No Image Available</span>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+
+    <div class="col-md-6 mt-4 mt-md-0">
+      <h2>{{ product.title }}</h2>
+      <ul class="list-unstyled">
+        <li><strong>Brand:</strong> {{ product.brand }}</li>
+        <li><strong>Price:</strong> {{ product.actual_price }}</li>
+        <li><strong>Discount:</strong> {{ product.discount }}</li>
+        <li><strong>Seller:</strong> {{ product.seller }}</li>
+        <li><strong>Rating:</strong> {{ product.average_rating }}</li>
+        <li>
+          <strong>Availability:</strong>
+          <span
+            [ngClass]="{
+              'text-success': !product.out_of_stock,
+              'text-danger': product.out_of_stock
+            }"
+          >
+            {{ product.out_of_stock ? "Out of Stock" : "In Stock" }}
+          </span>
+        </li>
+      </ul>
+      <p class="text-muted lead">
+        <strong class="text-primary">Categorie : </strong>
+        {{ product.category }}
+      </p>
+      <h3>
+        <span class="me-5">Description</span>
+        <button class="btn btn-primary ms-5" (click)="goBack()">
+          <i class="bi bi-arrow-left-circle-fill"></i>
+          Retour
+        </button>
+      </h3>
+      <p class="lead">{{ product.description }}</p>
+    </div>
+  </div>
+
+  <hr class="my-4" />
+</div>

@@ -1,0 +1,71 @@
+<!--  -->
+<div class="row">
+  <!--  -->
+  <h1>Administration - Produits</h1>
+  <h2 class="h3 mb-3 fw-normal">Liste des produits</h2>
+</div>
+<div class="row mb-5">
+  <!-- Ajouter un nouveau produit -->
+  <div class="col">
+    <button class="btn btn-success" (click)="addProduct()">
+      Ajouter un produit
+    </button>
+  </div>
+</div>
+<!--  -->
+<div>
+  <div class="row p-4">
+    <!-- Affichage du spinner pendant le chargement -->
+    <div *ngIf="loading" class="col-md-12 mt-5 mb-5 text-center">
+      <!-- <div class="spinner-border text-primary" role="status">
+        <span style="size: 200px" class="visually-hidden">Loading...</span>
+      </div> -->
+      <button class="btn btn-primary" type="button" disabled>
+        <span
+          class="spinner-border spinner-border-sm"
+          aria-hidden="true"
+        ></span>
+        <span role="status"> Loading...</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Aucun produit disponible -->
+  <ng-template #noProducts>
+    <div class="col-md-12 text-center">
+      <p>Aucun produit disponible pour le moment.</p>
+    </div>
+  </ng-template>
+</div>
+
+<!-- Affichage des produits -->
+<div class="row" *ngIf="!loading && products.length > 0; else noProducts">
+  <div
+    *ngFor="
+      let product of products | paginate : { itemsPerPage: 16, currentPage: p }
+    "
+    class="col-md-3 mb-4"
+  >
+    <app-fashion-product-item [product]="product"></app-fashion-product-item>
+    <div class="mt-2">
+      <button class="btn btn-warning me-2" (click)="editProduct(product)">
+        Modifier
+      </button>
+      <button class="btn btn-danger me-2" (click)="deleteProduct(product)">
+        Supprimer
+      </button>
+    </div>
+    <hr />
+  </div>
+</div>
+
+<!-- Affichage de la pagination si la liste de produits n'est pas vide -->
+<div *ngIf="!loading && products.length > 0" class="row">
+  <div class="col-8 mx-auto text-center">
+    <pagination-controls
+      (pageChange)="p = $event"
+      previousLabel="Précédent"
+      nextLabel="Suivant"
+    ></pagination-controls>
+  </div>
+</div>

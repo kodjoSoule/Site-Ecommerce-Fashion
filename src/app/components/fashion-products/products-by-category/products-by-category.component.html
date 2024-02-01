@@ -1,0 +1,126 @@
+<!--  -->
+<div class="col-md-4">
+  <div class="input-group mb-3">
+    <label for="searchType" class="input-group-text">Recherche</label>
+    <select
+      id="searchType"
+      class="form-select"
+      [(ngModel)]="searchCriteria.searchType"
+    >
+      <option value="title">Nom</option>
+      <option value="brand">Marque</option>
+      <option value="category">Categories</option>
+      <option value="price">Prix</option>
+    </select>
+  </div>
+</div>
+
+<div class="col-md-8">
+  <div *ngIf="searchCriteria.searchType === 'title'" class="input-group mb-3">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Recherche par nom"
+      [(ngModel)]="searchCriteria.title"
+      (input)="onInputChange()"
+    />
+  </div>
+
+  <div *ngIf="searchCriteria.searchType === 'brand'" class="input-group mb-3">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Recherche par marque"
+      [(ngModel)]="searchCriteria.brand"
+    />
+  </div>
+
+  <div
+    *ngIf="searchCriteria.searchType === 'category'"
+    class="input-group mb-3"
+  >
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Recherche par categorie"
+      [(ngModel)]="searchCriteria.category"
+    />
+  </div>
+
+  <div *ngIf="searchCriteria.searchType === 'price'" class="input-group mb-3">
+    <input
+      type="number"
+      class="form-control"
+      placeholder="Min Price"
+      [(ngModel)]="searchCriteria.minPrice"
+    />
+    <input
+      type="number"
+      class="form-control"
+      placeholder="Max Price"
+      [(ngModel)]="searchCriteria.maxPrice"
+    />
+  </div>
+</div>
+
+<!--  -->
+<div class="row">
+  <!--  -->
+  <h1 class="h3 mb-3 fw-normal">Liste des produits</h1>
+</div>
+<!-- <div
+    class="col-md-4 mb-4"
+    *ngFor="
+      let product of products | paginate : { itemsPerPage: 3, currentPage: p }
+    "
+  >
+    <app-fashion-product-item [product]="product"></app-fashion-product-item>
+  </div> -->
+<div>
+  <div class="row p-4">
+    <!-- Affichage du spinner pendant le chargement -->
+    <div *ngIf="loading" class="col-md-12 mt-5 mb-5 text-center">
+      <!-- <div class="spinner-border text-primary" role="status">
+      <span style="size: 200px" class="visually-hidden">Loading...</span>
+    </div> -->
+      <button class="btn btn-primary" type="button" disabled>
+        <span
+          class="spinner-border spinner-border-sm"
+          aria-hidden="true"
+        ></span>
+        <span role="status"> Loading...</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Affichage des produits -->
+  <div class="row" *ngIf="!loading && products.length > 0; else noProducts">
+    <div
+      *ngFor="
+        let product of products
+          | paginate : { itemsPerPage: 16, currentPage: p }
+      "
+      class="col-md-3 mb-4"
+    >
+      <app-fashion-product-item [product]="product"></app-fashion-product-item>
+    </div>
+  </div>
+
+  <!-- Aucun produit disponible -->
+  <ng-template #noProducts>
+    <div class="col-md-12 text-center">
+      <p>Aucun produit disponible pour le moment.</p>
+    </div>
+  </ng-template>
+</div>
+
+<!-- Affichage de la pagination si la liste de produits n'est pas vide -->
+<div *ngIf="!loading && products.length > 0" class="row">
+  <div class="col-8 mx-auto text-center">
+    <pagination-controls
+      (pageChange)="p = $event"
+      previousLabel="Précédent"
+      nextLabel="Suivant"
+    ></pagination-controls>
+  </div>
+</div>
